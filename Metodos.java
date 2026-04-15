@@ -32,9 +32,33 @@ public class Metodos {
             
         }
     }
-    
-    public LinkedList<ObjEstudiante> Consultarstudiante(LinkedList<ObjEstudiante> p){
+    public ObjEstudiante ConsultarEstudiante(int cedula, LinkedList<ObjEstudiante> p){
+        ObjEstudiante o = new ObjEstudiante();
+        for (ObjEstudiante obj : p) {
+            if (o.getCedula()==cedula){
+                o.setCedula(cedula);
+                o.setNombre(obj.getNombre());
+                o.setCarne(obj.getCarne());
+            }
+            else if (o.getCedula() != cedula){
+                System.out.println("Estudiante no encontrado");
+            }
+        }
+        return o;
+    }
 
+    public LinkedList<ObjEstudiante> ModificarEstudiante(int cedula, LinkedList<ObjEstudiante> p, Scanner sc){
+        for (ObjEstudiante o : p) {
+            if (o.getCedula()==cedula){
+                System.out.println("Ingrese el nombre: ");
+                o.setNombre(sc.next());
+                System.out.println("Ingrese el carnet: ");
+                o.setCarne(sc.next());
+            }
+            else if (o.getCedula() != cedula){
+                System.out.println("Estudiante no encontrado");
+            }
+        }
         return p;
     }
 }

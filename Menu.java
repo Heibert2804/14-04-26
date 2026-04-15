@@ -10,7 +10,7 @@ public class Menu{
     int opt = 0;
     while (continuar) {
         System.out.println("Escoja la opcion que requiere");
-        System.out.println("1. Ingresar Esyudiante");
+        System.out.println("1. Ingresar Estudiante");
         System.out.println("2. Consultar Estudiante");
         System.out.println("3. Modificar Estudiante");
         System.out.println("4. Eliminar Estudiante");
@@ -36,7 +36,8 @@ public class Menu{
                 m.MostrarLista(lista);
                 break;
             case 6:        
-                System.out.println("REPARACION");
+                Importar i = new Importar();
+                lista = i.ImportarArchivo();
                 break;
             case 7:        
                 Exportar e = new Exportar();
@@ -46,7 +47,7 @@ public class Menu{
                 continuar = false;
                 break;
             default:
-                System.out.println("Elija una ocion valida");
+                System.out.println("Elija una opcion valida");
                 break;
             }
 
