@@ -10,19 +10,21 @@ public class Importar {
             String linea;
             ObjEstudiante obj = null;
             while ((linea = br.readLine()) != null) {
-                if (linea.startsWith("Cedula:")) {
+                if (linea.startsWith("Nombre:")) {
                     if (obj != null) {
                         lista.add(obj);
                     }
                     obj = new ObjEstudiante();
                     obj.setCedula(Integer.parseInt(linea.substring(8)));
-                } else if (linea.startsWith("Nombre:")) {
+                } else if (linea.startsWith("Carnet:")) {
                     if (obj != null) {
                         obj.setNombre(linea.substring(8));
                     }
-                } else if (linea.startsWith("Apellido:")) {
+                } else if (linea.startsWith("Correo:")) {
                     if (obj != null) {
-                        obj.setCarne(linea.substring(10));
+                        obj.setCedula(0);
+                        lista.add(obj);
+                        obj = null;
                     }
                 }
             }

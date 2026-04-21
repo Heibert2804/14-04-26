@@ -61,4 +61,10 @@ public class Metodos {
         }
         return p;
     }
+
+    public LinkedList<ObjEstudiante> EliminarEstudiante(int cedula, LinkedList<ObjEstudiante> p, Scanner sc){
+        p.removeIf(x -> x.getCedula() == cedula);
+        
+        return p;
+    }
 }
