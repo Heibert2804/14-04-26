@@ -3,22 +3,31 @@ import java.util.Scanner;
 
 public class Metodos {
     
-    public LinkedList<ObjEstudiante> LlenarLista(LinkedList<ObjEstudiante> p, Scanner sc) {
+    public LinkedList<ObjEstudiante> LlenarLista(LinkedList<ObjEstudiante> p, Scanner sc, Validaciones v) {
         boolean pedir = true;
         while (pedir) {
             ObjEstudiante o = new ObjEstudiante();
             System.out.println("Ingrese el Nombre");
             o.setNombre(sc.next());
+            if(!v.ValidarDimensioneNombre(o.getNombre())){
+                System.out.println("Ingrese el Nombre");
+                o.setNombre(sc.next());
+            }
             System.out.println("Ingrese el Carnet");
             o.setCarne(sc.next());
             System.out.println("Ingrese la Cedula");
             o.setCedula(sc.nextInt());
-            p.add(o);
-            System.out.println("Desea seguir llenando? 1)SI 2)NO");
-            int opt = sc.nextInt();
-            if(opt == 2){
-                pedir = false;
+            if(v.ValidarCedula(o.getCedula(), p)){
+                System.out.println("El estudiante ya existe");
+            }else{
+               p.add(o); 
+                System.out.println("Desea seguir llenando? 1)SI 2)NO");
+                int opt = sc.nextInt();
+                if(opt == 2){
+                    pedir = false;
+                }
             }
+           
         }
         return p;
     }

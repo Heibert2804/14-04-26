@@ -3,11 +3,12 @@ import java.util.Scanner;
 
 public class Menu{
     public static void main(String[] args) {
+    Validaciones v = new Validaciones();
     Scanner sc = new Scanner(System.in);
     boolean continuar = true;
     LinkedList<ObjEstudiante> lista = new LinkedList<>();
     Metodos m = new Metodos();
-    int opt = 0;
+    int opt = v.ValidarEntero(sc);
     while (continuar) {
         System.out.println("Escoja la opcion que requiere");
         System.out.println("1. Ingresar Estudiante");
@@ -18,19 +19,19 @@ public class Menu{
         System.out.println("6. Importar");
         System.out.println("7. Exportar");
         System.out.println("8. Salir ");
-        opt = sc.nextInt();
+        opt = v.ValidarRango(1, 6, opt, sc);
         switch (opt) {
             case 1:
-                m.LlenarLista(lista, sc);
+                m.LlenarLista(lista, sc, v);
                 break;
             case 2:
-                System.out.println("REPARACION");
+                m.ConsultarEstudiante(opt, lista);
                 break;
             case 3:
-                System.out.println("REPARACION");
+                m.ModificarEstudiante(opt, lista, sc);
                 break;
             case 4:        
-                System.out.println("REPARACION");
+                m.EliminarEstudiante(opt, lista, sc);
                 break;
             case 5:        
                 m.MostrarLista(lista);
